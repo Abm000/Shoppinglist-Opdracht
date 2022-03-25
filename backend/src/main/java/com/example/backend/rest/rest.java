@@ -28,7 +28,7 @@ public class rest {
         productServ.save(product1);
         return ResponseEntity.ok(true);
     }
-    @PostMapping("/user")
+    @PostMapping("/login")
     public ResponseEntity validUser(@RequestBody User user) {
       return  ResponseEntity.ok( userServ.cradantiolesValidations(user));
 
