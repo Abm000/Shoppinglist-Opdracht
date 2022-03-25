@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   login(){
     this.loginService.login(this.username, this.password).subscribe(isLoggedIn =>{
       if(isLoggedIn){
+        this.loginService.user = new User(this.username,this.password);
         this.router.navigateByUrl('/myProducts').then(r => console.log('Your access is granted'))
       }
         console.log('noooooooooooooooo')

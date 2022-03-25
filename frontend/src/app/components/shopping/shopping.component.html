@@ -1,1 +1,6 @@
-<p>shopping works!</p>
+
+<ul>
+  <li *ngFor="let item of products; ">{{item}}</li>
+</ul>
+<input type="text" [(ngModel)]="product">
+<input type="button" (click)="addProduct(product)" value="add new product">
