@@ -1,23 +1,6 @@
 package com.example.backend.repository;
-
-import java.util.Collection;
-import java.util.List;
-
+// basic functions should exist in every repository
 public interface RepositoryServ<E>{
-
-    default boolean add(E element) {
-        return false;
-    }
-
-    default E remove(E element) {
-        return null;
-    }
-
-    E findById(int id);
-
+     boolean add(E element);
     E save(E element);
-
-    Collection<E> findAll();
-    public List<E> findByQuery(String jpqlName, Object... params);
-
 }

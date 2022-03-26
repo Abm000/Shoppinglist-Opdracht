@@ -14,8 +14,8 @@ public class rest {
     private ProductServ productServ;
     @Autowired
     private UserServ userServ;
-
-    @GetMapping("/{userName}")
+    //
+    @GetMapping("/product/{userName}")
     public ResponseEntity<List<Product>> findByUser(@PathVariable String userName) {
         User user = userServ.getUserByUserName(userName);
       return ResponseEntity.ok(productServ.findByQuery("find-All-Products",user.getId()));
@@ -23,15 +23,16 @@ public class rest {
     @PostMapping("/product")
     public ResponseEntity validUser(@RequestParam String product, @RequestParam String username) {
         Product product1 = new Product();
+        User user = userServ.getUserByUserName(username);
+        if (user == null) return ResponseEntity.ok(false);
         product1.setName(product);
-        product1.setUser(userServ.getUserByUserName(username));
+        product1.setUser(user);
         productServ.save(product1);
         return ResponseEntity.ok(true);
     }
     @PostMapping("/login")
     public ResponseEntity validUser(@RequestBody User user) {
       return  ResponseEntity.ok( userServ.cradantiolesValidations(user));
-
     }
 
 

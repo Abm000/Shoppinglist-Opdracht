@@ -1,15 +1,15 @@
 export class Product{
-  private _product:string;
+  private _name:string;
 
   constructor(product: string) {
-    this._product = product;
+    this._name = product;
   }
 
-  get product(): string {
-    return this._product;
+  get name(): string {
+    return this._name;
   }
 
-  set product(value: string) {
-    this._product = value;
+  set name(value: string) {
+    this._name = value;
   }
 }

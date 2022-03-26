@@ -1,6 +1,6 @@
 
-<ul>
-  <li *ngFor="let item of products; ">{{item}}</li>
+<ul *ngIf="products.length>0">
+  <li *ngFor="let item of products; ">{{item.name}}</li>
 </ul>
-<input type="text" [(ngModel)]="product">
+<input  type="text" [(ngModel)]="product.name">
 <input type="button" (click)="addProduct(product)" value="add new product">

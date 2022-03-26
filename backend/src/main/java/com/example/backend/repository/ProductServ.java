@@ -26,12 +26,6 @@ public class ProductServ implements RepositoryServ<Product> {
         return false;
     }
 
-    @Override
-    public Product remove(Product element) {
-        return RepositoryServ.super.remove(element);
-    }
-
-    @Override
     public Product findById(int id) {
         return em.find(Product.class, id);
     }
@@ -44,13 +38,6 @@ public class ProductServ implements RepositoryServ<Product> {
         }
         throw new IllegalArgumentException("Product can't be null");
     }
-
-    @Override
-    public Collection<Product> findAll() {
-        return null;
-    }
-
-    @Override
     public List<Product> findByQuery(String jpqlName, Object... params) {
         TypedQuery<Product> namedQuery = em.createNamedQuery(jpqlName, Product.class);
 

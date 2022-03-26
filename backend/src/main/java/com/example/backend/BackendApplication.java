@@ -30,7 +30,7 @@ public class BackendApplication implements CommandLineRunner {
         userServ.save(user);
     }
 
-    @Bean
+/*    @Bean
     public WebMvcConfigurer configure() {
         return new WebMvcConfigurer() {
             @Override
@@ -38,5 +38,5 @@ public class BackendApplication implements CommandLineRunner {
                 reg.addMapping("/*").allowedOrigins("*");
             }
         };
-    }
+    }*/
 }
