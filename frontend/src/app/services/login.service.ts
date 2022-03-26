@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Observable, Subject, Subscription} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {catchError, Observable, Subject, Subscription, throwError} from "rxjs";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {User} from "../modules/User";
 import {Router} from "@angular/router";
 
@@ -16,11 +16,16 @@ export class LoginService {
       observer.next(this.user);
     })
     this.sub.subscribe(user => {
-      if (!user) this.router.navigateByUrl('/').then(r => console.log('invalid user'))
+      if (!user) this.router.navigateByUrl('/').then(() => console.log('login'))
     })
   }
   public login(username:string, password:string): Observable<boolean> {
-    return this.httpClient.post<boolean>(`http://localhost:8060/login`, new User(username,password));
+    return this.httpClient.post<boolean>
+    (`http://localhost:8060/login`, new User(username,password)).pipe(catchError(this.handleError));
+  }
+  handleError(error: HttpErrorResponse){
+    console.log("something wrong happened");
+    return throwError(error);
   }
 
 }

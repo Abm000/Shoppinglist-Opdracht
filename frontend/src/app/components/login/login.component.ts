@@ -26,8 +26,13 @@ export class LoginComponent implements OnInit {
         this.loginService.user = new User(this.username,this.password);
         this.router.navigateByUrl('/myProducts').then(r => console.log('Your access is granted'))
       }
-        console.log('noooooooooooooooo')
-    }
+        console.log('invalid username or password')
+    },
+      (error) => {
+        //Handle the error here
+        //If not handled, then throw it
+        console.log(error)
+      }
     )
   }
 }
